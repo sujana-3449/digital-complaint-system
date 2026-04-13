@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Complaint</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            width:600px;
+            margin:60px auto;
+            background:white;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            margin-bottom:25px;
+            color:#333;
+        }
+
+        .details{
+            background:#f8f9fa;
+            padding:15px;
+            border-radius:8px;
+            margin-bottom:20px;
+            line-height:1.6;
+        }
+
+        .details p{
+            margin:8px 0;
+        }
+
+        strong{
+            color:#444;
+        }
+
+        select, textarea{
+            width:100%;
+            padding:10px;
+            margin-top:8px;
+            border-radius:6px;
+            border:1px solid #ccc;
+            font-size:14px;
+        }
+
+        textarea{
+            resize:none;
+            height:90px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#667eea;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+            margin-top:15px;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#5a67d8;
+            transform:scale(1.02);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Complaint Details</h2>
+
+    <div class="details">
+        <p><strong>Tracking ID:</strong> {{ complaint[1] }}</p>
+        <p><strong>Issue:</strong> {{ complaint[7] }}</p>
+        <p><b>Priority:</b> {{complaint[8]}}</p>
+        <p><strong>Title:</strong> {{ complaint[9] }}</p>
+        <p><strong>Description:</strong> {{ complaint[10] }}</p>
+        <p><strong>Status:</strong> {{ complaint[11] }}</p>
+    </div>
+
+    <form method="POST" action="/update/{{ complaint[1] }}">
+        <label><strong>Update Status</strong></label>
+        <select name="status">
+            <option value="Viewed">Viewed</option>
+            <option value="Resolved">Resolved</option>
+        </select>
+
+        <label style="margin-top:10px;"><strong>Admin Remarks</strong></label>
+        <textarea name="remarks" placeholder="Enter Remarks"></textarea>
+
+        <button type="submit">Update Complaint</button>
+		<a href="/" class="back-btn">⬅ Back</a>
+    </form>
+
+</div>
+
+</body>
+</html>
