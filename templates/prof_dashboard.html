@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Professional Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins', sans-serif;
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+padding:40px;
+}
+
+.header{
+text-align:center;
+color:white;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+
+.filter-section{
+text-align:right;
+margin-bottom:20px;
+}
+
+select,input{
+padding:8px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+padding:8px 14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.filter-btn{
+background:#2c5364;
+color:white;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#203a43;
+color:white;
+padding:12px;
+}
+
+td{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f5f8fb;
+}
+
+/* STATUS COLORS */
+
+.pending{color:#ff9800;font-weight:600;}
+.viewed{color:#2196f3;font-weight:600;}
+.resolved{color:#4caf50;font-weight:600;}
+
+/* PRIORITY COLORS */
+
+.high{color:red;font-weight:600;}
+.medium{color:orange;font-weight:600;}
+.low{color:green;font-weight:600;}
+
+.view-btn{
+background:#2196f3;
+color:white;
+}
+
+.update-btn{
+background:#4caf50;
+color:white;
+}
+
+.logout-btn{
+background:#f44336;
+color:white;
+margin-top:20px;
+}
+
+.logout-container{
+text-align:center;
+margin-top:25px;
+}
+
+img{
+border-radius:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h2>Welcome {{role}} (Professional Panel)</h2>
+</div>
+
+<div class="card">
+
+<div class="filter-section">
+
+<form method="GET">
+
+<select name="issue">
+
+<option value="">All Issues</option>
+
+{% for issue in issues %}
+<option value="{{issue}}">{{issue}}</option>
+{% endfor %}
+
+</select>
+
+<button type="submit" class="filter-btn">Filter</button>
+
+</form>
+
+</div>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Tracking ID</th>
+<th>Roll</th>
+<th>Name</th>
+<th>Year</th>
+<th>Department</th>
+<th>Issue</th>
+<th>Title</th>
+<th>Priority</th>
+<th>Status</th>
+<th>Image</th>
+<th>View</th>
+<th>Update</th>
+</tr>
+
+{% for c in complaints %}
+
+<tr>
+
+<td>{{c[0]}}</td>
+
+<td>{{c[1]}}</td>
+
+<td>{{c[3]}}</td>
+
+<td>{{c[4]}}</td>
+
+<td>{{c[5]}}</td>
+
+<td>{{c[6]}}</td>
+
+<td>{{c[7]}}</td>
+
+<td>{{c[9]}}</td>
+
+<td>
+
+{% if c[8] == "High" %}
+<span class="high">High</span>
+
+{% elif c[8] == "Medium" %}
+<span class="medium">Medium</span>
+
+{% else %}
+<span class="low">Low</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+{% if c[12] == "Pending" %}
+<span class="pending">{{c[12]}}</span>
+
+{% elif c[12] == "Viewed" %}
+<span class="viewed">{{c[12]}}</span>
+
+{% elif c[12] == "Resolved" %}
+<span class="resolved">{{c[12]}}</span>
+
+{% else %}
+{{c[12]}}
+{% endif %}
+
+</td>
+
+<td>
+
+{% if c[11] %}
+<img src="/uploads/{{c[11]}}" width="90">
+{% else %}
+No Image
+{% endif %}
+
+</td>
+
+<td>
+
+<a href="/view/{{c[1]}}">
+<button class="view-btn">View</button>
+</a>
+
+</td>
+
+<td>
+
+<form action="/update/{{c[0]}}" method="POST">
+
+<select name="status">
+
+<option value="Pending">Pending</option>
+<option value="Viewed">Viewed</option>
+<option value="Resolved">Resolved</option>
+
+</select>
+
+<input type="text" name="remarks" placeholder="Remarks">
+
+<button type="submit" class="update-btn">Update</button>
+
+</form>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<div class="logout-container">
+
+<a href="/prof_admin_login">
+<button class="logout-btn">Logout</button>
+</a>
+
+<br><br>
+
+<a href="/">⬅ Back</a>
+
+</div>
+
+</body>
+</html>
