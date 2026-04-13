@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Principal Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins', sans-serif;
+background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+padding:40px;
+}
+
+.header{
+text-align:center;
+color:white;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+padding:30px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+
+.buttons{
+text-align:center;
+margin-bottom:25px;
+}
+
+.buttons button{
+padding:10px 22px;
+margin:8px;
+border:none;
+border-radius:8px;
+font-size:14px;
+cursor:pointer;
+transition:0.3s ease;
+font-weight:500;
+}
+
+.conf-btn{
+background:linear-gradient(135deg,#36d1dc,#5b86e5);
+color:white;
+}
+
+.prof-btn{
+background:linear-gradient(135deg,#ff9966,#ff5e62);
+color:white;
+}
+
+.logout-btn{
+background:#f44336;
+color:white;
+}
+
+.buttons button:hover{
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+h3{
+margin-bottom:15px;
+color:#333;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+th{
+background:#203a43;
+color:white;
+padding:12px;
+}
+
+td{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f4f8fb;
+}
+
+.pending{color:#ff9800;font-weight:600;}
+.viewed{color:#2196f3;font-weight:600;}
+.resolved{color:#4caf50;font-weight:600;}
+
+.high{color:red;font-weight:600;}
+.medium{color:orange;font-weight:600;}
+.low{color:green;font-weight:600;}
+
+.no-remarks{
+color:#999;
+font-style:italic;
+}
+
+.back-btn{
+display:inline-block;
+margin-top:20px;
+padding:8px 16px;
+background:#555;
+color:white;
+text-decoration:none;
+border-radius:6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h2>Principal Maintenance Panel</h2>
+</div>
+
+<div class="card">
+
+<div class="buttons">
+
+<a href="/principal_dashboard?type=Confidential">
+<button class="conf-btn">Confidential Complaints</button>
+</a>
+
+<a href="/principal_dashboard?type=Professional">
+<button class="prof-btn">Professional Complaints</button>
+</a>
+
+<a href="/logout">
+<button class="logout-btn">Logout</button>
+</a>
+
+</div>
+
+{% if complaint_type %}
+
+<h3>{{ complaint_type }} Complaints</h3>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Tracking ID</th>
+<th>Roll</th>
+<th>Name</th>
+<th>Year</th>
+<th>Department</th>
+<th>Issue</th>
+<th>Title</th>
+<th>Priority</th>
+<th>Status</th>
+<th>Remarks</th>
+<th>Rating</th>
+<th>Feedback</th>
+</tr>
+
+{% for c in complaints %}
+
+<tr>
+
+<td>{{c[0]}}</td>
+<td>{{c[1]}}</td>
+<td>{{c[3]}}</td>
+<td>{{c[4]}}</td>
+<td>{{c[5]}}</td>
+<td>{{c[6]}}</td>
+<td>{{c[7]}}</td>
+<td>{{c[9]}}</td>
+
+<td>
+{% if c[8] == "High" %}
+<span class="high">High</span>
+{% elif c[8] == "Medium" %}
+<span class="medium">Medium</span>
+{% else %}
+<span class="low">Low</span>
+{% endif %}
+</td>
+
+<td>
+{% if c[12] == "Pending" %}
+<span class="pending">{{c[12]}}</span>
+{% elif c[12] == "Viewed" %}
+<span class="viewed">{{c[12]}}</span>
+{% elif c[12] == "Resolved" %}
+<span class="resolved">{{c[12]}}</span>
+{% endif %}
+</td>
+
+<td>
+{% if c[13] %}
+{{c[13]}}
+{% else %}
+<span class="no-remarks">No Remarks</span>
+{% endif %}
+</td>
+
+<td>
+{% if c[15] %}
+⭐ {{c[15]}}
+{% else %}
+-
+{% endif %}
+</td>
+
+<td>
+{% if c[16] %}
+{{c[16]}}
+{% else %}
+<span class="no-remarks">No Feedback</span>
+{% endif %}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endif %}
+
+<a href="/" class="back-btn">⬅ Back</a>
+
+</div>
+
+</body>
+</html>
