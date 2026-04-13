@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Login</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background: linear-gradient(to right,#11998e,#38ef7d);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    width:350px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px gray;
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#11998e;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+}
+
+button:hover{
+    background:#0e8077;
+}
+
+.link{
+    text-align:center;
+}
+
+a{
+    text-decoration:none;
+    color:#11998e;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Login</h2>
+
+<form method="POST">
+
+<label>Roll Number</label>
+<input type="text" name="roll" required>
+
+<label>Password</label>
+<input type="password" name="password" required>
+
+<button type="submit">Login</button>
+
+</form>
+
+<p class="link">
+New Student?
+<a href="/student_register">Register</a>
+</p>
+
+</div>
+
+</body>
+</html>
