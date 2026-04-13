@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Register</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background: linear-gradient(to right,#6a11cb,#2575fc);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    width:350px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px gray;
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#2575fc;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+}
+
+button:hover{
+    background:#1a5ed9;
+}
+
+.link{
+    text-align:center;
+}
+
+a{
+    text-decoration:none;
+    color:#2575fc;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Registration</h2>
+
+<form method="POST">
+
+<label>Roll Number</label>
+<input type="text" name="roll" required>
+
+<label>Name</label>
+<input type="text" name="name" required>
+
+<label>Email</label>
+<input type="email" name="email" required>
+
+<label>Password</label>
+<input type="password" name="password" required>
+
+<button type="submit">Register</button>
+
+</form>
+
+<p class="link">
+Already Registered?
+<a href="/student_login">Login</a>
+</p>
+
+</div>
+
+</body>
+</html>
