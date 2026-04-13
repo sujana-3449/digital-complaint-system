@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Dashboard</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#f4f6f9;
+    text-align:center;
+}
+
+.header{
+    background:#2575fc;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    margin-top:40px;
+}
+
+button{
+    width:250px;
+    padding:15px;
+    margin:10px;
+    font-size:16px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.conf{
+    background:#ff9800;
+    color:white;
+}
+
+.prof{
+    background:#4caf50;
+    color:white;
+}
+
+.track{
+    background:#2196f3;
+    color:white;
+}
+
+.logout{
+    background:#f44336;
+    color:white;
+}
+
+button:hover{
+    opacity:0.8;
+}
+
+/* Complaint table */
+
+table{
+    margin:40px auto;
+    border-collapse:collapse;
+    width:80%;
+    background:white;
+}
+
+th,td{
+    padding:12px;
+    border:1px solid #ddd;
+}
+
+th{
+    background:#2575fc;
+    color:white;
+}
+
+.feedback_btn{
+    background:#673ab7;
+    color:white;
+    padding:6px 12px;
+    border-radius:5px;
+    text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h2>Welcome {{session['student']}}</h2>
+</div>
+
+<div class="container">
+
+<h3>Complaint Services</h3>
+
+<a href="/confidential">
+<button class="conf">Confidential Complaint</button>
+</a>
+
+<br>
+
+<a href="/professional">
+<button class="prof">Professional Complaint</button>
+</a>
+
+<br>
+
+<a href="/track">
+<button class="track">Track Complaint</button>
+</a>
+
+<br>
+
+<a href="/logout">
+<button class="logout">Logout</button>
+</a>
+
+</div>
+
+
+</table>
+
+</body>
+</html>
