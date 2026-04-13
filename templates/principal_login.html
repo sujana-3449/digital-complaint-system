@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Principal Login</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Poppins', sans-serif;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+        }
+
+        .login-card{
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding:50px 40px;
+            border-radius:20px;
+            text-align:center;
+            width:350px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.3);
+            border:1px solid rgba(255,255,255,0.3);
+        }
+
+        h2{
+            color:white;
+            margin-bottom:30px;
+            font-weight:600;
+            letter-spacing:1px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            font-size:15px;
+            font-weight:500;
+            cursor:pointer;
+            background: linear-gradient(135deg,#36d1dc,#5b86e5);
+            color:white;
+            transition:0.3s ease;
+        }
+
+        button:hover{
+            transform:translateY(-3px);
+            box-shadow:0 8px 20px rgba(91,134,229,0.4);
+        }
+
+        button:active{
+            transform:scale(0.97);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-card">
+    <h2>Principal Login</h2>
+
+    <form method="POST">
+        <button type="submit">Login as Principal</button>
+		<a href="/" class="back-btn">⬅ Back</a>
+		
+    </form>
+</div>
+
+</body>
+</html>
