@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confidential Dashboard</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            padding:40px;
+        }
+
+        .header{
+            text-align:center;
+            color:white;
+            margin-bottom:30px;
+        }
+
+        .header h2{
+            font-weight:600;
+            letter-spacing:1px;
+        }
+
+        .card{
+            background:white;
+            padding:25px;
+            border-radius:15px;
+            box-shadow:0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        /* FILTER SECTION */
+        .filter-section{
+            margin-bottom:20px;
+            text-align:right;
+        }
+
+        select{
+            padding:8px 12px;
+            border-radius:6px;
+            border:1px solid #ccc;
+            font-size:14px;
+        }
+
+        button{
+            padding:8px 14px;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            font-size:14px;
+            transition:0.3s ease;
+        }
+
+        .filter-btn{
+            background:#2a5298;
+            color:white;
+        }
+
+        .filter-btn:hover{
+            background:#1e3c72;
+        }
+
+        /* TABLE */
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:15px;
+        }
+
+        th{
+            background:#2a5298;
+            color:white;
+            padding:12px;
+            font-weight:500;
+        }
+
+        td{
+            padding:10px;
+            text-align:center;
+            border-bottom:1px solid #ddd;
+        }
+
+        tr:hover{
+            background:#f5f8ff;
+        }
+
+        /* STATUS COLORS */
+        .pending{
+            color:#ff9800;
+            font-weight:600;
+        }
+
+        .viewed{
+            color:#2196f3;
+            font-weight:600;
+        }
+
+        .resolved{
+            color:#4caf50;
+            font-weight:600;
+        }
+
+        /* BUTTONS */
+        .view-btn{
+            background:#4CAF50;
+            color:white;
+        }
+
+        .view-btn:hover{
+            background:#388e3c;
+        }
+
+        .logout-btn{
+            background:#f44336;
+            color:white;
+            margin-top:20px;
+        }
+
+        .logout-btn:hover{
+            background:#c62828;
+        }
+
+        .logout-container{
+            text-align:center;
+            margin-top:25px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>Welcome {{role}} (Confidential Panel)</h2>
+</div>
+
+<div class="card">
+
+    <!-- FILTER -->
+    <div class="filter-section">
+        <form method="GET">
+            <select name="issue">
+                <option value="">All Issues</option>
+                {% for issue in issues %}
+                <option value="{{issue}}">{{issue}}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="filter-btn">Filter</button>
+        </form>
+    </div>
+
+    <!-- TABLE -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Tracking ID</th>
+            <th>Issue</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Description</th>
+            <th>View</th>
+        </tr>
+
+        {% for c in complaints %}
+        <tr>
+            <td>{{c[0]}}</td>
+            <td>{{c[1]}}</td>
+            <td>{{c[7]}}</td>
+            <td>{{c[9]}}</td>
+            <td>{{c[5]}}</td>
+            <td>{{c[10]}}</td>
+
+            <td>
+                {% if c[11] == "Pending" %}
+                    <span class="pending">{{c[11]}}</span>
+                {% elif c[11] == "Viewed" %}
+                    <span class="viewed">{{c[11]}}</span>
+                {% elif c[11] == "Resolved" %}
+                    <span class="resolved">{{c[11]}}</span>
+                {% else %}
+                    {{c[11]}}
+                {% endif %}
+            </td>
+
+            <td>
+                <a href="/view/{{c[1]}}">
+                    <button class="view-btn">View</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+<div class="logout-container">
+    <a href="/conf_admin_login">
+        <button class="logout-btn">Logout</button>
+		<a href="/" class="back-btn">⬅ Back</a>
+    </a>
+</div>
+
+</body>
+</html>
