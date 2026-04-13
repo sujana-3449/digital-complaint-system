@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confidential Complaint</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2b5876, #4e4376);
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container{
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding:40px 35px;
+            width:420px;
+            border-radius:18px;
+            box-shadow:0 15px 35px rgba(0,0,0,0.3);
+            text-align:center;
+            border:1px solid rgba(255,255,255,0.2);
+        }
+
+        h2{
+            color:white;
+            margin-bottom:25px;
+            font-weight:600;
+            letter-spacing:1px;
+        }
+
+        form{
+            display:flex;
+            flex-direction:column;
+        }
+
+        label{
+            color:white;
+            font-size:14px;
+            text-align:left;
+            margin-bottom:6px;
+        }
+
+        select,
+        input,
+        textarea{
+            width:100%;
+            padding:10px;
+            margin-bottom:18px;
+            border:none;
+            border-radius:8px;
+            font-size:14px;
+            outline:none;
+        }
+
+        textarea{
+            resize:none;
+            height:90px;
+        }
+
+        button{
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            font-size:15px;
+            font-weight:500;
+            cursor:pointer;
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+            color:white;
+            transition:0.3s ease;
+        }
+
+        button:hover{
+            transform: translateY(-3px);
+            box-shadow:0 8px 20px rgba(221,36,118,0.4);
+        }
+
+        button:active{
+            transform:scale(0.97);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Confidential Complaint Form</h2>
+
+    <form method="POST">
+        <label>Select Issue</label>
+        <select name="issue" required>
+            {% for issue in issues %}
+            <option value="{{issue}}">{{issue}}</option>
+            {% endfor %}
+        </select>
+
+        <input type="text" name="title" placeholder="Complaint Title" required>
+
+        <textarea name="description" placeholder="Description" required></textarea>
+
+        <button type="submit">Submit Complaint</button>
+		<a href="/" class="back-btn">⬅ Back</a>
+    </form>
+</div>
+
+</body>
+</html>
