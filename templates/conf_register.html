@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Confidential Admin Register</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#1f4037,#99f2c8);
+}
+
+.container{
+
+width:420px;
+padding:40px;
+
+background:rgba(255,255,255,0.12);
+border-radius:18px;
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+
+box-shadow:0 20px 45px rgba(0,0,0,0.3);
+border:1px solid rgba(255,255,255,0.2);
+
+text-align:center;
+}
+
+h2{
+color:white;
+margin-bottom:30px;
+font-weight:600;
+letter-spacing:1px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+label{
+color:white;
+font-size:14px;
+text-align:left;
+}
+
+input,select{
+
+padding:12px;
+border:none;
+outline:none;
+border-radius:8px;
+
+background:rgba(255,255,255,0.9);
+
+font-size:14px;
+}
+
+input:focus,select:focus{
+
+border:2px solid #00c6ff;
+
+}
+
+button{
+
+margin-top:10px;
+padding:13px;
+
+border:none;
+border-radius:8px;
+
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+
+color:white;
+font-size:15px;
+font-weight:500;
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+button:hover{
+
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+}
+
+a{
+
+display:block;
+margin-top:15px;
+color:#fff;
+font-size:14px;
+text-decoration:none;
+}
+
+a:hover{
+text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Confidential Admin Register</h2>
+
+<form method="POST">
+
+<label>Select Role</label>
+
+<select name="role" required>
+<option value="">-- Select Role --</option>
+<option>HOD</option>
+<option>Class Teacher</option>
+<option>CR</option>
+</select>
+
+<input type="text" name="name" placeholder="Enter Name" required>
+
+<input type="email" name="email" placeholder="Enter Email" required>
+
+<input type="password" name="password" placeholder="Create Password" required>
+
+<button type="submit">Register</button>
+
+<a href="/conf_login">Already have an account? Login</a>
+<a href="/" class="back-btn">⬅ Back</a>
+
+</form>
+
+</div>
+
+</body>
+</html>
